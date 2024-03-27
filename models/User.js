@@ -51,7 +51,7 @@ userSchema.methods.comparePassword = async function (canditatePassword) {
 userSchema.methods.createJWT = function () {
   // console.log(this.account);
   return jwt.sign(
-    { userId: this._id, account: this.account },
+    { userId: this._id, account: this.account, role: this.role },
     process.env.JWT_SECRET,
     { expiresIn: "30d" }
   );
