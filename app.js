@@ -6,8 +6,6 @@ const app = express();
 app.use(express.json());
 const cors = require("cors");
 const authenticateUser = require("./middlewares/authenticateUser");
-const authenticateHospital = require("./middlewares/authenticateHospital");
-const authenticateCompany = require("./middlewares/authenticateCompany");
 
 const authRouter = require("./routes/auth");
 const userRouter = require("./routes/user");
@@ -22,8 +20,8 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/u", authenticateUser, userRouter);
-app.use("/api/v1/c", authenticateCompany, companyRouter);
-app.use("/api/v1/h", authenticateHospital, hospitalRouter);
+app.use("/api/v1/company", companyRouter);
+app.use("/api/v1/hospital", hospitalRouter);
 
 const port = process.env.PORT || 4000;
 

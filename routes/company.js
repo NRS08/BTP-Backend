@@ -1,7 +1,17 @@
-const { Get } = require("../controllers/company");
+const {
+  Get,
+  listing,
+  getAllPolicies,
+  getYourListedPolicies,
+} = require("../controllers/company");
+
 const express = require("express");
+const authenticateCompany = require("../middlewares/authenticateCompany");
 const router = express.Router();
 
-router.route("/company").get(Get);
+router.route("/").get(authenticateCompany, Get);
+router.route("/listPolicy").post(authenticateCompany, listing);
+router.route("/policies").get(getAllPolicies);
+router.route("/myPolicies").get(authenticateCompany, getYourListedPolicies);
 
 module.exports = router;
