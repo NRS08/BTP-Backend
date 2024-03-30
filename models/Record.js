@@ -9,6 +9,10 @@ const recordSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Please Provide ID"],
   },
+  mrId: {
+    type: Number,
+    required: [true, "Please Provide ID"],
+  },
   diagnosis: {
     type: Array,
     required: [true, "Please Provide diagnosis"],

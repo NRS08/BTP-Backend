@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/u", authenticateUser, userRouter);
+app.use("/api/v1/user", authenticateUser, userRouter);
 app.use("/api/v1/company", companyRouter);
 app.use("/api/v1/hospital", hospitalRouter);
 
