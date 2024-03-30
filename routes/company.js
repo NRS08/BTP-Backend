@@ -3,6 +3,7 @@ const {
   listing,
   getAllPolicies,
   getYourListedPolicies,
+  getPolicy,
 } = require("../controllers/company");
 
 const express = require("express");
@@ -13,5 +14,6 @@ router.route("/").get(authenticateCompany, Get);
 router.route("/listPolicy").post(authenticateCompany, listing);
 router.route("/policies").get(getAllPolicies);
 router.route("/myPolicies").get(authenticateCompany, getYourListedPolicies);
+router.route("/policies/:id").get(getPolicy);
 
 module.exports = router;

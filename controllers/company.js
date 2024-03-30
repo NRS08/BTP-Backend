@@ -25,6 +25,15 @@ const getAllPolicies = async (req, res) => {
   res.status(200).json({ items });
 };
 
+const getPolicy = async (req, res) => {
+  const { id: policyId } = req.params;
+  const policy = await PolicyListing.findById({ _id: policyId });
+  if (!policy) {
+    throw new BadRequestError("No policy found");
+  }
+  res.status(200).json({ policy });
+};
+
 const getYourListedPolicies = async (req, res) => {
   let queryProducts = {};
   queryProducts.createdBy = req.user.userId;
@@ -36,4 +45,10 @@ const Get = async (req, res) => {
   res.status(201).json({ user: "Company Function" });
 };
 
-module.exports = { Get, listing, getAllPolicies, getYourListedPolicies };
+module.exports = {
+  Get,
+  listing,
+  getAllPolicies,
+  getYourListedPolicies,
+  getPolicy,
+};
